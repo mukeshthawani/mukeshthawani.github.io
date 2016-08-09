@@ -6,4 +6,6 @@ categories:
 comments: true
 ---
 
-Hi, Welcome to my blog. I will writing here from time to time related to my work.
+Hi, welcome to my blog. Finally, I started a blog. 😎
+
+I want to write about my experiences and things I do, not restricted to but mostly related to computer science. Let's see where it goes.

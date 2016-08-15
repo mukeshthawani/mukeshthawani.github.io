@@ -78,6 +78,7 @@
     display: inline-block;
     *display: inline;
     zoom: 1;
+    color: $side-text-other;
     & a {
       margin-top: 1em;
       text-transform: lowercase;

@@ -35,8 +35,8 @@ kramdown:
 owner:
   name: "Mukesh Thawani"
   avatar: avatar.png
-  job: "iOS Developer"
-  bio: "Hi this is Mukesh. I am an iOS Developer"
+  job:
+  bio: "I am an iOS Developer. Using Swift language for app development."
   email: mukesh9039@gmail.com
   disqus-shortname:
   twitter: MukeshThawani

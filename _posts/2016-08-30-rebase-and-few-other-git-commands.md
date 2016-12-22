@@ -8,7 +8,7 @@ comments: true
 ---
 
 
-This post is for listing some useful git commands other than what we commonly use. As I don't use many commands regularly(not just me it's same for most of the users 😃) so sometimes I forget the exact syntax of a command. I have to repeat the same process i.e. to search and see which one is correct for the particular use case I am looking for. After writing this post some of my time in repeating the same process of searching would be saved and hopefully yours too.
+This post is for listing some useful git commands other than what we commonly use. As I don't use many commands regularly (not just me it's same for most of the users 😃) so sometimes I forget the exact syntax of a command. I have to repeat the same process i.e. to search and see which one is correct for the particular use case I am looking for. After writing this post some of my time in repeating the same process of searching would be saved and hopefully yours too.
 
 So here starts the list:
 
@@ -44,6 +44,9 @@ So let's say you want to squash last 3 commits so you will use:
  `git rebase -i HEAD~3`
 Here we are taking 3 because we want to rewrite last three commits. Then you will see interactive rebasing tool with first three commit messages and few other options. Here to combine last two commits into first one change option of last two commits which is pick to squash.
 
+Use `git rebase -i --root`
+to modify all the history even the root commit.
+
 ### Update commit message
 
 If you want to update the message of your last commit, we will use interactive rebasing which we did in our last step. There is one more way to do it using `git commit --amend -m "your new message"` which we already saw earlier but using rebasing is better as there you have option to edit more commits.
@@ -60,13 +63,66 @@ Now your commit is updated with new message.
 **Always remember to play locally i.e create a new branch for every feature because here if you apply rebase or other commands(where history can change), you don't have to worry about history as your master branch is clean. Also it will save others because they won't see their history getting affected. One more benefit of this is that if somebody updates remote branch with new commits then you can pull it from master and then rebase it into branch you are working on (if you need that commits that are changed in upstream) this way it won't create a new merge commit like it does when you use merge not rebase.**
 
 
-## To add only specific lines:
+## To revert back x commits
 
 Use:
+
+`git checkout COMMIT .`
+
+Where COMMIT is the commit hash.
+`.` at the end is used to apply changes to the whole tree.
+
+To undo this:
+
+`git reset --hard; `
+
+
+## To add only specific lines:
+
 `git add -p`
+
 it will interactively let you add, skip, or split diff hunks.
 
-## To see changes after adding:
+## To see the changes after adding:
 
 `git diff --staged`
+
 Normally we just use `git diff` but that only works before staging.
+
+## To see the commit differences between git branches:
+
+`git log master..branch-X`
+
+This will show you the list of commits that branch-X has but master doesn't.
+
+## To checkout only the specific lines:
+
+`git checkout -p`
+
+## To see the changes in a commit:
+
+`git show COMMIT`
+
+The COMMIT parameter is a commit-ish.
+
+## To undo git add
+
+`git reset`
+
+Your changes will be unstaged and ready for you to re-add as you want. It is useful when you want to unstage multiple files but you want to keep that changes.
+
+## Merge Git branches without using checkouts
+
+As long as you're doing a fast-forward merge, then you can simply use
+
+`git fetch <remote> <sourceBranch>:<destinationBranch>`
+
+Use `git checkout [revision] .Examples:`
+
+Merge local branch foo into local branch master,
+without having to checkout master first.
+Here `.` means to use the local repository as the "remote":
+
+`git fetch . foo:master`
+
+😎💻

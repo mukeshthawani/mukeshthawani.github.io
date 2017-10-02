@@ -2,7 +2,6 @@
 layout: post
 title:  "Welcome to my blog!"
 date:   2015-08-06 15:07:19
-categories:
 comments: true
 ---
 
